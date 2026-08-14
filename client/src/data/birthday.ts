@@ -17,6 +17,12 @@ export type MovieQuiz = {
   options: QuizOption[];
 };
 
+const hostedAsset = (filename: string) => {
+  const hostname = typeof window === "undefined" ? "" : window.location.hostname;
+  const isManusPreview = hostname === "localhost" || hostname.includes("manus");
+  return isManusPreview ? `/manus-storage/${filename}` : `/assets/${filename}`;
+};
+
 const placeholderPortraits = [
   "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=560&q=82",
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=560&q=82",
@@ -30,30 +36,30 @@ const placeholderPortraits = [
 ];
 
 const suppliedMovieAssets = {
-  alexis: "/manus-storage/alexis-portrait_aabe04b4.jpg",
-  bonesCard: "/manus-storage/bones-and-all-card_40d8f21c.jpg",
-  charlie: "/manus-storage/charlie-portrait_a5f61f17.jpg",
-  emily: "/manus-storage/emily-portrait_994bc573.jpg",
-  lee: "/manus-storage/lee-portrait_21a80521.jpg",
-  maren: "/manus-storage/maren-portrait_e0e09eaa.jpg",
-  patrick: "/manus-storage/patrick-portrait_805154ca.jpg",
-  perksCard: "/manus-storage/perks-of-being-a-wallflower-card_3bbd0ef6.jpg",
-  sam: "/manus-storage/sam-portrait_eb9b0e72.jpg",
-  sully: "/manus-storage/sully-portrait_f44ea4e7.jpg",
-  tyler: "/manus-storage/tyler-portrait_5bde1878.jpg",
-  wavesCard: "/manus-storage/waves-card_b44f20fc.jpg",
-  tvGirl1: "/manus-storage/TV-Girl1_bacbbce6.jpg",
-  tvGirl2: "/manus-storage/TV-Girl2_c49a4f38.jpg",
-  tvGirl3: "/manus-storage/TV-Girl3_c728f869.jpg",
-  tvGirlForeground: "/manus-storage/tvgirl_a69c2618.png",
+  alexis: hostedAsset("alexis-portrait_aabe04b4.jpg"),
+  bonesCard: hostedAsset("bones-and-all-card_40d8f21c.jpg"),
+  charlie: hostedAsset("charlie-portrait_a5f61f17.jpg"),
+  emily: hostedAsset("emily-portrait_994bc573.jpg"),
+  lee: hostedAsset("lee-portrait_21a80521.jpg"),
+  maren: hostedAsset("maren-portrait_e0e09eaa.jpg"),
+  patrick: hostedAsset("patrick-portrait_805154ca.jpg"),
+  perksCard: hostedAsset("perks-of-being-a-wallflower-card_3bbd0ef6.jpg"),
+  sam: hostedAsset("sam-portrait_eb9b0e72.jpg"),
+  sully: hostedAsset("sully-portrait_f44ea4e7.jpg"),
+  tyler: hostedAsset("tyler-portrait_5bde1878.jpg"),
+  wavesCard: hostedAsset("waves-card_b44f20fc.jpg"),
+  tvGirl1: hostedAsset("TV-Girl1_bacbbce6.jpg"),
+  tvGirl2: hostedAsset("TV-Girl2_c49a4f38.jpg"),
+  tvGirl3: hostedAsset("TV-Girl3_c728f869.jpg"),
+  tvGirlForeground: hostedAsset("tvgirl_a69c2618.png"),
 };
 
 export const birthdayContent = {
-  logo: "/manus-storage/clara-flower-mark_008578ec.png",
-  heroImage: "/manus-storage/clara-hero-botanical_22a8aff1.jpg",
-  movieImage: "/manus-storage/clara-movie-triptych_2e3177b6.jpg",
-  sushiImage: "/manus-storage/clara-sushi_bb7a6b6c.jpg",
-  italyImage: "/manus-storage/clara-italy_96316a1f.jpg",
+  logo: hostedAsset("clara-flower-mark_008578ec.png"),
+  heroImage: hostedAsset("clara-hero-botanical_22a8aff1.jpg"),
+  movieImage: hostedAsset("clara-movie-triptych_2e3177b6.jpg"),
+  sushiImage: hostedAsset("clara-sushi_bb7a6b6c.jpg"),
+  italyImage: hostedAsset("clara-italy_96316a1f.jpg"),
   bandImage: suppliedMovieAssets.tvGirlForeground,
   flowerImages: [
     "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=86",
